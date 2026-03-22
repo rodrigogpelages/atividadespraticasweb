@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 05: Laboratório Prático de Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* =======================================================
+           SISTEMA ANTI-CÓPIA (Impede seleção de texto no documento)
+           ======================================================= */
+        * {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Suporte padrão */
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        input, textarea {
+            -webkit-user-select: auto;
+            user-select: auto;
+        }
+
+        /* =======================================================
+           VARIÁVEIS DE COR E TIPOGRAFIA
+           ======================================================= */
+        :root {
+            --primary: #3b82f6; /* Azul */
+            --secondary: #10b981; /* Verde */
+            --accent: #f59e0b; /* Amarelo */
+            --dark: #0f172a;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 80px;
+        }
+
+        /* =======================================================
+           CABEÇALHO
+           ======================================================= */
+        header {
+            background: var(--dark);
+            color: white;
+            width: 100%;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 20px;
+            color: #cbd5e1;
+        }
+
+        .meta-info {
+            display: inline-flex;
+            gap: 20px;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* =======================================================
+           CONTAINER PRINCIPAL
+           ======================================================= */
+        main {
+            width: 100%;
+            max-width: 900px;
+            margin-top: -30px;
+            padding: 0 20px;
+        }
+
+        /* =======================================================
+           ALERTA ANTI-CÓPIA
+           ======================================================= */
+        .alert-box {
+            background: #fffbeb;
+            border-left: 6px solid var(--accent);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .alert-box i {
+            font-size: 40px;
+            color: var(--accent);
+        }
+
+        .alert-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            color: #b45309;
+            margin-bottom: 5px;
+        }
+
+        .alert-box p {
+            font-size: 16px;
+            color: #78350f;
+        }
+
+        /* =======================================================
+           PASSOS DO TUTORIAL
+           ======================================================= */
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .step-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* =======================================================
+           CÓDIGO (VISUAL)
+           ======================================================= */
+        .code-window {
+            background: #1e293b;
+            border-radius: 12px;
+            margin: 25px 0;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .code-header {
+            background: #0f172a;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.r { background: #ef4444; }
+        .dot.y { background: #eab308; }
+        .dot.g { background: #22c55e; }
+
+        .code-title {
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .code-content {
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: auto;
+            text-shadow: 0px 1px 0px rgba(0,0,0,0.5); 
+        }
+
+        /* Cores de Sintaxe HTML */
+        .tag { color: #f472b6; } /* Rosa */
+        .attr { color: #38bdf8; } /* Azul claro */
+        .val { color: #a3e635; } /* Verde claro */
+        .text { color: #e2e8f0; } /* Branco sujo */
+        .comment { color: #64748b; font-style: italic; }
+
+        /* Cores de Sintaxe CSS */
+        .sel { color: #fbbf24; } /* Amarelo */
+        .prop { color: #7dd3fc; } /* Azul pastel */
+        .cval { color: #c084fc; } /* Roxo pastel */
+
+        /* =======================================================
+           INSTRUÇÕES E DICAS
+           ======================================================= */
+        .instruction-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .instruction-list li {
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .instruction-list i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .tip-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        
+        /* ENTREGA FINAL */
+        .submit-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e1b4b 100%);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            border-radius: 16px;
+            margin-top: 50px;
+        }
+
+        .submit-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .submit-link {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            margin-top: 25px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .submit-link:hover {
+            transform: scale(1.05);
+            background: #34d399;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>Aula 05: Laboratório Web</h1>
+        <p>Projeto Autoguiado: A Minha Página de Tributo</p>
+        <div class="meta-info">
+            <span><i class="fa-solid fa-code"></i> Prática de Fixação</span>
+            <span><i class="fa-solid fa-user-tie"></i> Prof. Rodrigo G. Pelages</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- AVISO ANTI CÓPIA -->
+        <div class="alert-box">
+            <i class="fa-solid fa-keyboard"></i>
+            <div>
+                <h3>Aviso Importante: Proibido Copiar!</h3>
+                <p>Nesta aula, a função "Copiar e Colar" está desativada. O objetivo é que <strong>digite o seu próprio código</strong>. A memória muscular é a melhor amiga de um programador. Leia atentamente, respire fundo e mãos no teclado!</p>
+            </div>
+        </div>
+
+        <div class="tip-box" style="font-size: 18px; margin-bottom: 40px; border-left-color: var(--secondary); background: #f0fdf4;">
+            <strong><i class="fa-solid fa-lightbulb"></i> O Seu Tema:</strong> Escolha um <strong>Filme, Série, Banda ou Jogo favorito</strong>. Ao longo destes 10 passos, substitua os textos genéricos (ex: <i>[Nome do Jogo]</i>) pelas informações reais da sua escolha.
+        </div>
+
+        <!-- PASSO 1: SETUP -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h2 class="step-title">Preparando o Ambiente</h2>
+            </div>
+            <p>Antes de programar, precisamos da nossa "mesa de trabalho". Vamos usar um editor de código na nuvem.</p>
+            <ul class="instruction-list">
+                <li><i class="fa-solid fa-arrow-right"></i> Abra uma nova aba no seu navegador.</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Acesse o <strong>CodePen</strong> (<a href="https://codepen.io/pen/" target="_blank">codepen.io/pen</a>) ou <strong>JSFiddle</strong> (<a href="https://jsfiddle.net/" target="_blank">jsfiddle.net</a>).</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Identifique as janelas: Haverá uma área para <strong>HTML</strong> e outra para <strong>CSS</strong>. Os resultados aparecerão automaticamente na tela em branco.</li>
+            </ul>
+        </div>
+
+        <!-- PASSO 2: HTML SEMÂNTICO -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h2 class="step-title">A Raiz de Tudo (Estrutura Semântica)</h2>
+            </div>
+            <p>Lembra da Aula 4? O Google precisa entender o que é cabeçalho, conteúdo e rodapé. Vamos criar as caixas invisíveis principais na janela <strong>HTML</strong>.</p>
+            
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Janela HTML</span>
+                </div>
+                <div class="code-content">
+<span class="tag">&lt;header&gt;</span>
+  <span class="comment">&lt;!-- O cabeçalho vai aqui --&gt;</span>
+<span class="tag">&lt;/header&gt;</span>
+
+<span class="tag">&lt;main&gt;</span>
+  <span class="comment">&lt;!-- O conteúdo principal vai aqui --&gt;</span>
+<span class="tag">&lt;/main&gt;</span>
+
+<span class="tag">&lt;footer&gt;</span>
+  <span class="comment">&lt;!-- O rodapé vai aqui --&gt;</span>
+<span class="tag">&lt;/footer&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 3: O CABEÇALHO -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h2 class="step-title">Títulos Principais (Cabeçalho)</h2>
+            </div>
+            <p>Dentro do seu <code>&lt;header&gt;</code>, vamos adicionar o Título Principal (<code>&lt;h1&gt;</code>) e um pequeno subtítulo/parágrafo (<code>&lt;p&gt;</code>).</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Adicione dentro de &lt;header&gt;</span>
+                </div>
+                <div class="code-content">
+  <span class="tag">&lt;h1&gt;</span><span class="text">Tributo a: [Seu Tema Aqui]</span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span><span class="text">Uma página criada por [Seu Nome]</span><span class="tag">&lt;/p&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 4: O CONTEÚDO PRINCIPAL -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h2 class="step-title">Escrevendo Artigos (Conteúdo)</h2>
+            </div>
+            <p>Agora, vá para dentro da tag <code>&lt;main&gt;</code>. Vamos usar a tag <code>&lt;article&gt;</code> para criar um bloco de texto com um Título de Nível 2 (<code>&lt;h2&gt;</code>).</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Adicione dentro de &lt;main&gt;</span>
+                </div>
+                <div class="code-content">
+  <span class="tag">&lt;article&gt;</span>
+    <span class="tag">&lt;h2&gt;</span><span class="text">Por que é o meu favorito?</span><span class="tag">&lt;/h2&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Escreva 2 ou 3 frases sobre a história, personagens ou o motivo de você gostar tanto dessa obra.</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/article&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 5: LISTAS DE CURIOSIDADES -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <h2 class="step-title">Listas Não Ordenadas (ul/li)</h2>
+            </div>
+            <p>Logo abaixo do fechamento do seu <code>&lt;/article&gt;</code> (mas ainda dentro do <code>&lt;main&gt;</code>), crie uma lista com 3 curiosidades sobre o seu tema.</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Abaixo do &lt;/article&gt;</span>
+                </div>
+                <div class="code-content">
+  <span class="tag">&lt;h3&gt;</span><span class="text">Curiosidades:</span><span class="tag">&lt;/h3&gt;</span>
+  <span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 1...</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 2...</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 3...</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 6: IMAGENS E ACESSIBILIDADE -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <h2 class="step-title">Adicionando Mídia (Imagens)</h2>
+            </div>
+            <p>Vá ao Google, busque uma imagem do seu tema, clique com o botão direito e selecione "Copiar endereço da imagem". Crie a tag <code>&lt;img&gt;</code> no HTML e não esqueça do <code>alt</code> para leitores de tela!</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Abaixo da sua lista &lt;/ul&gt;</span>
+                </div>
+                <div class="code-content">
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"COLE-O-LINK-AQUI"</span> <span class="attr">alt</span>=<span class="val">"Descreva a imagem detalhadamente"</span><span class="tag">&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 7: INCORPORANDO VÍDEOS -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">7</div>
+                <h2 class="step-title">Luz, Câmera... (Iframe)</h2>
+            </div>
+            <p>Abra uma nova aba, vá ao YouTube e busque um Trailer do seu tema. Clique em "Compartilhar" > "Incorporar", copie o código e digite-o abaixo da sua imagem.</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Abaixo da sua &lt;img&gt;</span>
+                </div>
+                <div class="code-content">
+  <span class="tag">&lt;iframe</span> <span class="attr">width</span>=<span class="val">"560"</span> <span class="attr">height</span>=<span class="val">"315"</span> <span class="attr">src</span>=<span class="val">"URL-DO-YOUTUBE"</span><span class="tag">&gt;&lt;/iframe&gt;</span>
+                </div>
+            </div>
+            <p><strong>Não se esqueça do Rodapé!</strong> Vá até a tag <code>&lt;footer&gt;</code> no final do arquivo e adicione um <code>&lt;p&gt;Atividade Aula 5 - 2026&lt;/p&gt;</code>.</p>
+        </div>
+
+        <!-- PASSO 8: INICIANDO O CSS -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">8</div>
+                <h2 class="step-title">Vestindo a Página (CSS Base)</h2>
+            </div>
+            <p>O seu site deve estar muito feio (imagens gigantes, vídeos tortos). É hora de mudar de janela! Vá para a janela do <strong>CSS</strong> para aplicar estilos na tag <code>body</code>.</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Janela CSS</span>
+                </div>
+                <div class="code-content">
+<span class="sel">body</span> {
+  <span class="prop">background-color</span>: <span class="cval">#e2e8f0</span>; <span class="comment">/* Um cinza bem claro */</span>
+  <span class="prop">font-family</span>: <span class="cval">Arial, sans-serif</span>; <span class="comment">/* Fonte mais limpa */</span>
+  <span class="prop">margin</span>: <span class="cval">0</span>; <span class="comment">/* Tira as margens padrão do navegador */</span>
+}
+
+<span class="comment">/* Ajusta as mídias para não quebrarem a tela */</span>
+<span class="sel">img, iframe</span> {
+  <span class="prop">max-width</span>: <span class="cval">100%</span>;
+  <span class="prop">border-radius</span>: <span class="cval">10px</span>;
+}
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 9: O BOX MODEL -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">9</div>
+                <h2 class="step-title">O Box Model na Prática</h2>
+            </div>
+            <p>Lembra da Aula 3? Vamos transformar a tag <code>main</code> numa "caixa flutuante" centralizada, branca e com sombra.</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Abaixo do body no CSS</span>
+                </div>
+                <div class="code-content">
+<span class="sel">main</span> {
+  <span class="prop">background-color</span>: <span class="cval">white</span>;
+  <span class="prop">max-width</span>: <span class="cval">800px</span>; <span class="comment">/* Largura máxima */</span>
+  <span class="prop">margin</span>: <span class="cval">40px auto</span>; <span class="comment">/* Auto centraliza a caixa! */</span>
+  <span class="prop">padding</span>: <span class="cval">30px</span>; <span class="comment">/* Espaço interno */</span>
+  <span class="prop">border-radius</span>: <span class="cval">15px</span>; <span class="comment">/* Cantos arredondados */</span>
+  <span class="prop">box-shadow</span>: <span class="cval">0px 5px 15px rgba(0,0,0, 0.2)</span>;
+}
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSO 10: ESTILO DO HEADER E FOOTER -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">10</div>
+                <h2 class="step-title">O Toque Final</h2>
+            </div>
+            <p>Para concluir a beleza do seu site, vamos pintar o Cabeçalho e centralizar o Rodapé. Sinta-se à vontade para trocar a cor <code>blueviolet</code> pela cor que mais combine com o seu tema!</p>
+
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <span class="code-title">Final do arquivo CSS</span>
+                </div>
+                <div class="code-content">
+<span class="sel">header</span> {
+  <span class="prop">background-color</span>: <span class="cval">blueviolet</span>;
+  <span class="prop">color</span>: <span class="cval">white</span>;
+  <span class="prop">text-align</span>: <span class="cval">center</span>;
+  <span class="prop">padding</span>: <span class="cval">40px</span>;
+}
+
+<span class="sel">footer</span> {
+  <span class="prop">text-align</span>: <span class="cval">center</span>;
+  <span class="prop">color</span>: <span class="cval">#64748b</span>;
+  <span class="prop">padding-bottom</span>: <span class="cval">30px</span>;
+}
+                </div>
+            </div>
+        </div>
+
+        <!-- ENTREGA -->
+        <div class="submit-section">
+            <h2><i class="fa-solid fa-flag-checkered"></i> Missão Cumprida!</h2>
+            <p style="font-size: 20px; max-width: 600px; margin: 0 auto;">Verifique se a sua página está com o vídeo, a imagem, fundo cinza e cabeçalho colorido. Tudo certo? Siga os passos abaixo para entregar a sua atividade.</p>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; margin-top: 30px; text-align: left; display: inline-block;">
+                <h4 style="font-size: 22px; color: var(--secondary); margin-bottom: 15px;">Instruções de Entrega:</h4>
+                <ol style="font-size: 18px; margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Salve (Save)</strong> o seu projeto no CodePen/JSFiddle.</li>
+                    <li>Copie o <strong>Link (URL)</strong> que aparece na barra de endereço do seu navegador.</li>
+                    <li>Acesse o portal do professor clicando no botão abaixo.</li>
+                    <li>Procure a seção "Entrega da Atividade" e cole o seu link.</li>
+                </ol>
+            </div>
+
+            <br>
+            <a href="https://rodrigogpelages.github.io/aulasinformatica/" target="_blank" class="submit-link">
+                <i class="fa-solid fa-paper-plane"></i> Entregar Atividade no Portal
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Script Anti-Cópia Rigoroso -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Desativa o clique com o botão direito (Context Menu)
+            document.addEventListener('contextmenu', event => event.preventDefault());
+
+            // Desativa o atalho de copiar (Ctrl+C / Cmd+C)
+            document.addEventListener('copy', event => {
+                event.preventDefault();
+                alert("Copiar código desativado! Por favor, digite o código para treinar a sua memória muscular. Bom trabalho!");
+            });
+
+            // Desativa o atalho de cortar (Ctrl+X / Cmd+X)
+            document.addEventListener('cut', event => {
+                event.preventDefault();
+            });
+
+            // Desativa teclas específicas que podem ser usadas para inspecionar ou selecionar tudo
+            document.addEventListener('keydown', function(e) {
+                // Previne Ctrl+A (Selecionar Tudo)
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                }
+                // Previne Ctrl+C (Copiar) extra safety
+                if (e.ctrlKey && e.key === 'c') {
+                    e.preventDefault();
+                }
+                // Previne F12 (Inspecionar Elemento - Opcional, mas útil num lab fechado)
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
