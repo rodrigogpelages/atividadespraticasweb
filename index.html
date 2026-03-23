@@ -263,6 +263,19 @@
             margin: 20px 0;
             font-size: 16px;
         }
+
+        /* CAIXAS DE AVISO DE ERROS COMUNS */
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #7f1d1d;
+        }
+        .warning-box i { color: #ef4444; margin-right: 10px; }
+        .warning-box strong { color: #991b1b; }
         
         /* ENTREGA FINAL */
         .submit-section {
@@ -320,7 +333,7 @@
             <i class="fa-solid fa-keyboard"></i>
             <div>
                 <h3>Aviso Importante: Proibido Copiar!</h3>
-                <p>Nesta aula, a função "Copiar e Colar" está desativada. O objetivo é que <strong>digite o seu próprio código</strong>. A memória muscular é a melhor amiga de um programador. Leia atentamente, respire fundo e mãos no teclado!</p>
+                <p>Nesta aula, a função "Copiar e Colar" está desativada. O objetivo é que <strong>digite o seu próprio código</strong>. A memória muscular é a melhor amiga de um programador. Leia atentamente, respire fundo e mãos no teclado! Os erros fazem parte da aprendizagem.</p>
             </div>
         </div>
 
@@ -332,13 +345,14 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">1</div>
-                <h2 class="step-title">Preparando o Ambiente</h2>
+                <h2 class="step-title">Preparando a Mesa de Trabalho</h2>
             </div>
-            <p>Antes de programar, precisamos da nossa "mesa de trabalho". Vamos usar um editor de código na nuvem.</p>
+            <p>Antes de construirmos uma casa, precisamos do terreno. O nosso terreno será o CodePen, um site onde o código ganha vida instantaneamente.</p>
             <ul class="instruction-list">
                 <li><i class="fa-solid fa-arrow-right"></i> Abra uma nova aba no seu navegador.</li>
-                <li><i class="fa-solid fa-arrow-right"></i> Acesse o <strong>CodePen</strong> (<a href="https://codepen.io/pen/" target="_blank">codepen.io/pen</a>) ou <strong>JSFiddle</strong> (<a href="https://jsfiddle.net/" target="_blank">jsfiddle.net</a>).</li>
-                <li><i class="fa-solid fa-arrow-right"></i> Identifique as janelas: Haverá uma área para <strong>HTML</strong> e outra para <strong>CSS</strong>. Os resultados aparecerão automaticamente na tela em branco.</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Acesse o <strong>CodePen</strong> (<a href="https://codepen.io/pen/" target="_blank">codepen.io/pen</a>).</li>
+                <li><i class="fa-solid fa-arrow-right"></i> <strong>Entendendo o ecrã:</strong> Verá 3 caixas em cima (HTML, CSS e JS) e um grande espaço branco em baixo.</li>
+                <li><i class="fa-solid fa-arrow-right"></i> Pode <strong>ignorar e minimizar a caixa JS</strong>. Hoje só vamos usar a caixa <strong>HTML</strong> (esqueleto) e a caixa <strong>CSS</strong> (roupa).</li>
             </ul>
         </div>
 
@@ -346,9 +360,10 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">2</div>
-                <h2 class="step-title">A Raiz de Tudo (Estrutura Semântica)</h2>
+                <h2 class="step-title">As Três Caixas Principais (HTML)</h2>
             </div>
-            <p>Lembra da Aula 4? O Google precisa entender o que é cabeçalho, conteúdo e rodapé. Vamos criar as caixas invisíveis principais na janela <strong>HTML</strong>.</p>
+            <p><strong>Onde digitar:</strong> Na caixa escrita <strong>HTML</strong>.</p>
+            <p><strong>Por que estamos a fazer isto?</strong> Vamos dividir o nosso site em 3 partes lógicas para o Google entender: o topo (header), o meio (main) e o fundo (footer).</p>
             
             <div class="code-window">
                 <div class="code-header">
@@ -357,17 +372,20 @@
                 </div>
                 <div class="code-content">
 <span class="tag">&lt;header&gt;</span>
-  <span class="comment">&lt;!-- O cabeçalho vai aqui --&gt;</span>
+  
 <span class="tag">&lt;/header&gt;</span>
 
 <span class="tag">&lt;main&gt;</span>
-  <span class="comment">&lt;!-- O conteúdo principal vai aqui --&gt;</span>
+  
 <span class="tag">&lt;/main&gt;</span>
 
 <span class="tag">&lt;footer&gt;</span>
-  <span class="comment">&lt;!-- O rodapé vai aqui --&gt;</span>
+  
 <span class="tag">&lt;/footer&gt;</span>
                 </div>
+            </div>
+            <div class="warning-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Atenção ao Fecho!</strong> Reparou que a segunda tag tem sempre uma barra <code>/</code>? Isso indica que a caixa fechou. Se esquecer a barra <code>/</code>, o site vai "partir"!
             </div>
         </div>
 
@@ -375,19 +393,23 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">3</div>
-                <h2 class="step-title">Títulos Principais (Cabeçalho)</h2>
+                <h2 class="step-title">O Título da Página</h2>
             </div>
-            <p>Dentro do seu <code>&lt;header&gt;</code>, vamos adicionar o Título Principal (<code>&lt;h1&gt;</code>) e um pequeno subtítulo/parágrafo (<code>&lt;p&gt;</code>).</p>
+            <p><strong>Onde digitar:</strong> Exatamente <em>no meio</em> das tags <code>&lt;header&gt;</code> e <code>&lt;/header&gt;</code> que acabou de criar.</p>
+            <p><strong>Por que estamos a fazer isto?</strong> A tag <code>h1</code> (Heading 1) cria o título maior e mais importante do site. A tag <code>p</code> (Paragraph) cria um texto normal.</p>
 
             <div class="code-window">
                 <div class="code-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <span class="code-title">Adicione dentro de &lt;header&gt;</span>
+                    <span class="code-title">Dentro de &lt;header&gt;</span>
                 </div>
                 <div class="code-content">
-  <span class="tag">&lt;h1&gt;</span><span class="text">Tributo a: [Seu Tema Aqui]</span><span class="tag">&lt;/h1&gt;</span>
-  <span class="tag">&lt;p&gt;</span><span class="text">Uma página criada por [Seu Nome]</span><span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;h1&gt;</span><span class="text">Tributo a: [Substitua pelo seu Tema]</span><span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p&gt;</span><span class="text">Uma página criada por [O Seu Nome]</span><span class="tag">&lt;/p&gt;</span>
                 </div>
+            </div>
+            <div class="tip-box">
+                <i class="fa-solid fa-eye"></i> Olhe para a parte branca em baixo no CodePen. O seu texto já deve ter aparecido! A preto e branco por agora, mas já lá está.
             </div>
         </div>
 
@@ -395,19 +417,20 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">4</div>
-                <h2 class="step-title">Escrevendo Artigos (Conteúdo)</h2>
+                <h2 class="step-title">Escrevendo o Artigo</h2>
             </div>
-            <p>Agora, vá para dentro da tag <code>&lt;main&gt;</code>. Vamos usar a tag <code>&lt;article&gt;</code> para criar um bloco de texto com um Título de Nível 2 (<code>&lt;h2&gt;</code>).</p>
+            <p><strong>Onde digitar:</strong> Agora desça e clique <em>no meio</em> das tags <code>&lt;main&gt;</code> e <code>&lt;/main&gt;</code>.</p>
+            <p><strong>Por que estamos a fazer isto?</strong> A tag <code>article</code> avisa o navegador que ali começa um texto independente. O <code>h2</code> é um subtítulo (menor que o h1).</p>
 
             <div class="code-window">
                 <div class="code-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <span class="code-title">Adicione dentro de &lt;main&gt;</span>
+                    <span class="code-title">Dentro de &lt;main&gt;</span>
                 </div>
                 <div class="code-content">
   <span class="tag">&lt;article&gt;</span>
     <span class="tag">&lt;h2&gt;</span><span class="text">Por que é o meu favorito?</span><span class="tag">&lt;/h2&gt;</span>
-    <span class="tag">&lt;p&gt;</span><span class="text">Escreva 2 ou 3 frases sobre a história, personagens ou o motivo de você gostar tanto dessa obra.</span><span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;p&gt;</span><span class="text">Gosto muito deste tema porque... (Escreva 2 frases aqui)</span><span class="tag">&lt;/p&gt;</span>
   <span class="tag">&lt;/article&gt;</span>
                 </div>
             </div>
@@ -417,9 +440,10 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">5</div>
-                <h2 class="step-title">Listas Não Ordenadas (ul/li)</h2>
+                <h2 class="step-title">Criando uma Lista com "Bolinhas"</h2>
             </div>
-            <p>Logo abaixo do fechamento do seu <code>&lt;/article&gt;</code> (mas ainda dentro do <code>&lt;main&gt;</code>), crie uma lista com 3 curiosidades sobre o seu tema.</p>
+            <p><strong>Onde digitar:</strong> Ainda dentro do <code>main</code>, mas <em>depois</em> do <code>&lt;/article&gt;</code>.</p>
+            <p><strong>O que significa?</strong> <code>ul</code> significa "Unordered List" (Lista sem números). <code>li</code> significa "List Item" (Item da lista).</p>
 
             <div class="code-window">
                 <div class="code-header">
@@ -429,9 +453,9 @@
                 <div class="code-content">
   <span class="tag">&lt;h3&gt;</span><span class="text">Curiosidades:</span><span class="tag">&lt;/h3&gt;</span>
   <span class="tag">&lt;ul&gt;</span>
-    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 1...</span><span class="tag">&lt;/li&gt;</span>
-    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 2...</span><span class="tag">&lt;/li&gt;</span>
-    <span class="tag">&lt;li&gt;</span><span class="text">Curiosidade 3...</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">A primeira curiosidade é...</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">A segunda curiosidade é...</span><span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="text">A terceira curiosidade é...</span><span class="tag">&lt;/li&gt;</span>
   <span class="tag">&lt;/ul&gt;</span>
                 </div>
             </div>
@@ -441,9 +465,10 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">6</div>
-                <h2 class="step-title">Adicionando Mídia (Imagens)</h2>
+                <h2 class="step-title">Colocando uma Imagem</h2>
             </div>
-            <p>Vá ao Google, busque uma imagem do seu tema, clique com o botão direito e selecione "Copiar endereço da imagem". Crie a tag <code>&lt;img&gt;</code> no HTML e não esqueça do <code>alt</code> para leitores de tela!</p>
+            <p><strong>Como apanhar a imagem:</strong> Abra o Google Imagens noutra aba. Pesquise o seu tema. Clique na foto que gostar com o botão direito do rato e escolha <strong>"Copiar endereço da imagem"</strong>.</p>
+            <p><strong>Onde digitar:</strong> Abaixo de onde fechou a lista <code>&lt;/ul&gt;</code>.</p>
 
             <div class="code-window">
                 <div class="code-header">
@@ -451,8 +476,14 @@
                     <span class="code-title">Abaixo da sua lista &lt;/ul&gt;</span>
                 </div>
                 <div class="code-content">
-  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"COLE-O-LINK-AQUI"</span> <span class="attr">alt</span>=<span class="val">"Descreva a imagem detalhadamente"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"COLE-O-LINK-AQUI-DENTRO"</span> <span class="attr">alt</span>=<span class="val">"Descreva a imagem detalhadamente"</span><span class="tag">&gt;</span>
                 </div>
+            </div>
+            <div class="warning-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Atenção Tripla!</strong><br>
+                1. A tag <code>img</code> <strong>NÃO</strong> tem fecho (não existe &lt;/img&gt;).<br>
+                2. O link da imagem TEM de ficar dentro das aspas <code>" "</code>.<br>
+                3. Não se esqueça do <code>alt</code>, é obrigatório para pessoas cegas que usam leitores de ecrã!
             </div>
         </div>
 
@@ -460,9 +491,10 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">7</div>
-                <h2 class="step-title">Luz, Câmera... (Iframe)</h2>
+                <h2 class="step-title">Trazendo um Vídeo do YouTube</h2>
             </div>
-            <p>Abra uma nova aba, vá ao YouTube e busque um Trailer do seu tema. Clique em "Compartilhar" > "Incorporar", copie o código e digite-o abaixo da sua imagem.</p>
+            <p><strong>Passo a passo no YouTube:</strong> Vá ao YouTube e abra um vídeo do seu tema. Em baixo do vídeo, clique em <strong>Partilhar</strong> > <strong>Incorporar</strong> (tem um ícone &lt;&gt;). Copie aquele bloco de código enorme que aparece à direita.</p>
+            <p><strong>Onde colar:</strong> Abaixo da sua <code>&lt;img&gt;</code>.</p>
 
             <div class="code-window">
                 <div class="code-header">
@@ -470,38 +502,45 @@
                     <span class="code-title">Abaixo da sua &lt;img&gt;</span>
                 </div>
                 <div class="code-content">
-  <span class="tag">&lt;iframe</span> <span class="attr">width</span>=<span class="val">"560"</span> <span class="attr">height</span>=<span class="val">"315"</span> <span class="attr">src</span>=<span class="val">"URL-DO-YOUTUBE"</span><span class="tag">&gt;&lt;/iframe&gt;</span>
+  <span class="comment">&lt;!-- Cole o código gigantesco do YouTube aqui. Exemplo abaixo: --&gt;</span>
+  <span class="tag">&lt;iframe</span> <span class="attr">width</span>=<span class="val">"560"</span> <span class="attr">height</span>=<span class="val">"315"</span> <span class="attr">src</span>=<span class="val">"URL-DO-YOUTUBE"</span> <span class="attr">title</span>=<span class="val">"YouTube video"</span> <span class="attr">frameborder</span>=<span class="val">"0"</span><span class="tag">&gt;&lt;/iframe&gt;</span>
                 </div>
             </div>
-            <p><strong>Não se esqueça do Rodapé!</strong> Vá até a tag <code>&lt;footer&gt;</code> no final do arquivo e adicione um <code>&lt;p&gt;Atividade Aula 5 - 2026&lt;/p&gt;</code>.</p>
+            
+            <div class="tip-box" style="background: #fef2f2; border-color: #ef4444;">
+                <strong>Quase a terminar o HTML!</strong> Vá lá abaixo ao final do seu código, encontre a tag <code>&lt;footer&gt;</code> e digite no meio dela: <code>&lt;p&gt;Atividade Aula 5 - 2026&lt;/p&gt;</code>.
+            </div>
         </div>
 
         <!-- PASSO 8: INICIANDO O CSS -->
-        <div class="step-card">
+        <div class="step-card" style="border: 3px solid var(--primary);">
             <div class="step-header">
                 <div class="step-number">8</div>
-                <h2 class="step-title">Vestindo a Página (CSS Base)</h2>
+                <h2 class="step-title">PARE! Vamos Mudar de Janela (CSS)</h2>
             </div>
-            <p>O seu site deve estar muito feio (imagens gigantes, vídeos tortos). É hora de mudar de janela! Vá para a janela do <strong>CSS</strong> para aplicar estilos na tag <code>body</code>.</p>
+            <p>Se olhar para o resultado agora, o seu site está uma bagunça. As imagens estão gigantes, o fundo é branco e sem graça. <strong>A partir de AGORA, vamos digitar APENAS na caixa escrita CSS.</strong></p>
+            <p><strong>A Regra de Ouro do CSS:</strong> Primeiro dizemos <em>quem</em> vamos pintar (ex: body), abrimos chaves <code>{</code>, dizemos o <em>que</em> muda, e terminamos SEMPRE com ponto e vírgula <code>;</code>.</p>
 
             <div class="code-window">
                 <div class="code-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <span class="code-title">Janela CSS</span>
+                    <span class="code-title">Na Janela CSS</span>
                 </div>
                 <div class="code-content">
 <span class="sel">body</span> {
-  <span class="prop">background-color</span>: <span class="cval">#e2e8f0</span>; <span class="comment">/* Um cinza bem claro */</span>
-  <span class="prop">font-family</span>: <span class="cval">Arial, sans-serif</span>; <span class="comment">/* Fonte mais limpa */</span>
-  <span class="prop">margin</span>: <span class="cval">0</span>; <span class="comment">/* Tira as margens padrão do navegador */</span>
+  <span class="prop">background-color</span>: <span class="cval">#e2e8f0</span>;
+  <span class="prop">font-family</span>: <span class="cval">Arial, sans-serif</span>;
+  <span class="prop">margin</span>: <span class="cval">0</span>;
 }
 
-<span class="comment">/* Ajusta as mídias para não quebrarem a tela */</span>
 <span class="sel">img, iframe</span> {
   <span class="prop">max-width</span>: <span class="cval">100%</span>;
   <span class="prop">border-radius</span>: <span class="cval">10px</span>;
 }
                 </div>
+            </div>
+            <div class="warning-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Cuidado com os Símbolos!</strong> Usamos as Chaves <code>{ }</code> para envolver as regras. E o ponto e vírgula <code>;</code> no final de cada linha é como o ponto final numa frase. Se o esquecer, o código "quebra" as linhas seguintes!
             </div>
         </div>
 
@@ -509,23 +548,24 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">9</div>
-                <h2 class="step-title">O Box Model na Prática</h2>
+                <h2 class="step-title">Criando o Cartão Principal (Main)</h2>
             </div>
-            <p>Lembra da Aula 3? Vamos transformar a tag <code>main</code> numa "caixa flutuante" centralizada, branca e com sombra.</p>
+            <p><strong>Onde digitar:</strong> Abaixo do código que acabou de fazer no <strong>CSS</strong>.</p>
+            <p><strong>Por que estamos a fazer isto?</strong> Vamos transformar a tag <code>main</code> (que engloba o nosso texto e mídias) numa caixa branca flutuante e bonita ao centro do ecrã.</p>
 
             <div class="code-window">
                 <div class="code-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <span class="code-title">Abaixo do body no CSS</span>
+                    <span class="code-title">Na Janela CSS (continuando em baixo)</span>
                 </div>
                 <div class="code-content">
 <span class="sel">main</span> {
   <span class="prop">background-color</span>: <span class="cval">white</span>;
-  <span class="prop">max-width</span>: <span class="cval">800px</span>; <span class="comment">/* Largura máxima */</span>
-  <span class="prop">margin</span>: <span class="cval">40px auto</span>; <span class="comment">/* Auto centraliza a caixa! */</span>
-  <span class="prop">padding</span>: <span class="cval">30px</span>; <span class="comment">/* Espaço interno */</span>
-  <span class="prop">border-radius</span>: <span class="cval">15px</span>; <span class="comment">/* Cantos arredondados */</span>
-  <span class="prop">box-shadow</span>: <span class="cval">0px 5px 15px rgba(0,0,0, 0.2)</span>;
+  <span class="prop">max-width</span>: <span class="cval">800px</span>; <span class="comment">/* Impede que fique muito esticado */</span>
+  <span class="prop">margin</span>: <span class="cval">40px auto</span>; <span class="comment">/* O 'auto' centraliza a caixa no ecrã automaticamente! */</span>
+  <span class="prop">padding</span>: <span class="cval">30px</span>; <span class="comment">/* Espaço interno para o texto não colar à borda */</span>
+  <span class="prop">border-radius</span>: <span class="cval">15px</span>; <span class="comment">/* Arredonda os cantinhos */</span>
+  <span class="prop">box-shadow</span>: <span class="cval">0px 5px 15px rgba(0,0,0, 0.2)</span>; <span class="comment">/* Sombra 3D */</span>
 }
                 </div>
             </div>
@@ -535,14 +575,15 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">10</div>
-                <h2 class="step-title">O Toque Final</h2>
+                <h2 class="step-title">As Cores Finais</h2>
             </div>
-            <p>Para concluir a beleza do seu site, vamos pintar o Cabeçalho e centralizar o Rodapé. Sinta-se à vontade para trocar a cor <code>blueviolet</code> pela cor que mais combine com o seu tema!</p>
+            <p><strong>Onde digitar:</strong> No fim de tudo, ainda na caixa <strong>CSS</strong>.</p>
+            <p>Vamos pintar o cabeçalho e centralizar o rodapé. Note que eu usei a cor <code>blueviolet</code> (Roxo Violeta), mas pode apagar e escrever outra cor em inglês (ex: <code>red</code>, <code>darkgreen</code>, <code>black</code>).</p>
 
             <div class="code-window">
                 <div class="code-header">
                     <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-                    <span class="code-title">Final do arquivo CSS</span>
+                    <span class="code-title">No final da Janela CSS</span>
                 </div>
                 <div class="code-content">
 <span class="sel">header</span> {
